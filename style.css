@@ -1,0 +1,195 @@
+
+
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background: #ebeae8;
+    color: #333;
+}
+     /* Estilos para o header (cabeçalho) */
+header {
+    
+    background-image: url('img/passeiodejet.jpg');
+    background-size: cover; 
+    background-position: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    position: relative;
+    color: white; 
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1; 
+}
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+@media (max-width: 768px) {
+    header {
+        padding: 50px 0;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+h2 {
+    color: #006699;
+    margin-bottom: 1rem;
+}
+
+section {
+    background: white;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+#livro img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.grid {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+.grid img {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    scroll-snap-align: center;
+}
+
+
+footer {
+    background: #006699;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}.contato-item {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+}
+
+.contact-image {
+    width: 30px;
+    height: auto;
+}.sobre-conteudo {
+    display: flex;
+    align-items: center; 
+    gap: 30px; 
+    flex-wrap: wrap; 
+}
+
+.sobre-image {
+    width: 250px; 
+    height: auto;
+    border-radius: 8px; 
+}
+
+.texto-sobre {
+    flex: 1; 
+}.livro-conteudo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.texto-livro {
+    flex: 1;
+}
+
+.livro-image {
+    width: 250px; 
+    height: auto;
+    border-radius: 8px; 
+}.destaque-livro {
+  background-color: #ffe082; 
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  color: #333;
+}
+
+.navegacao-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
+
+.navegacao-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.galeria-navegacao {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
