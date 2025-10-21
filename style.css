@@ -308,4 +308,128 @@ footer {
     max-width: 300px;
     margin-top: 20px;
   }
+ /* ======= CONTADOR ======= */
+.contador {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Orbitron', 'Arial Black', sans-serif;
+  color: #fff;
+  background: linear-gradient(145deg, #004d80, #007acc);
+  border-radius: 15px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contador::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.15), transparent);
+  animation: brilho 3s linear infinite;
+}
+
+@keyframes brilho {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.contador h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tempo {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.tempo div {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 15px 10px;
+  width: 90px;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.3),
+              0 2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease;
+}
+
+.tempo div:hover {
+  transform: translateY(-4px);
+}
+
+.tempo span {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff200;
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+
+.tempo small {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #fff;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+/* ======= BOTÃO DE COMPRA ======= */
+#botao-compra {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-comprar {
+  display: inline-block;
+  background: linear-gradient(90deg, #00b34a, #00e06f);
+  color: white;
+  padding: 15px 40px;
+  border-radius: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.btn-comprar:hover {
+  background: linear-gradient(90deg, #00e06f, #00b34a);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======= RESPONSIVO ======= */
+@media (max-width: 600px) {
+  .contador {
+    padding: 20px;
+  }
+  .contador h3 {
+    font-size: 1.5rem;
+  }
+  .tempo div {
+    width: 70px;
+    padding: 10px;
+  }
+  .tempo span {
+    font-size: 1.8rem;
+  }
+}
+
+
 }
