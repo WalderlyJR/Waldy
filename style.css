@@ -186,24 +186,48 @@ footer {
   flex: 1;
 }
 
-/* Livro */
+/* ... Seu CSS existente ... */
+
+/* Ajuste no .livro-conteudo para permitir que a foto e o texto-livro fiquem lado a lado */
 .livro-conteudo {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Alinha o conteúdo do livro no topo */
   gap: 30px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Permite quebrar linha em telas menores */
 }
 
-.texto-livro {
-  flex: 1;
-}
-
+/* Redefinindo o tamanho da imagem do livro */
 .livro-image {
   width: 250px;
   height: auto;
   border-radius: 8px;
+  flex-shrink: 0; /* Evita que a imagem encolha */
+  order: 2; /* Coloca a imagem depois do texto em telas grandes */
 }
 
+.texto-livro {
+  flex: 1;
+  min-width: 300px; /* Garante um espaço mínimo para o texto */
+  order: 1;
+}
+
+/* ... Seu CSS de mídia query existente (para 768px) ... */
+@media (max-width: 768px) {
+  /* ... (código existente) ... */
+  
+  .sobre-conteudo,
+  .livro-conteudo {
+    flex-direction: column;
+    align-items: center;
+  }
+  /* ... (código existente) ... */
+  .livro-image {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+    order: 1; /* Coloca a imagem antes do texto no responsivo */
+  }
+}
 .destaque-livro {
   background-color: #ffe082;
   padding: 20px;
@@ -308,6 +332,7 @@ footer {
     max-width: 300px;
     margin-top: 20px;
   }
+
  /* ======= CONTADOR ======= */
 .contador {
   text-align: center;
@@ -430,6 +455,5 @@ footer {
     font-size: 1.8rem;
   }
 }
-
 
 }
