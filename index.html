@@ -23,7 +23,6 @@
   position: relative;
   overflow: hidden;
   max-width: 100%;
-  
 }
 .contador h3 {
   position: relative;
@@ -37,20 +36,23 @@
 /* Blocos do cronômetro */
 .tempo {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centralizei para não depender de "space-between" */
   align-items: stretch;
-  gap: 10px;
+  gap: 8px; /* Reduzi um pouco o gap para caber em telas menores */
   position: relative;
   z-index: 1;
+  /* CRÍTICO: 'nowrap' garante que fiquem sempre em linha */
   flex-wrap: nowrap;
 }
 
 .tempo div {
   background: #f0f8ff;
   border-radius: 12px;
-  padding: 15px 10px;
-  flex: 1 1 0; /* Cresce e encolhe para caber todo o espaço */
-  min-width: 70px; /* Garantir que não fique muito estreito */
+  padding: 10px 5px; /* Reduzi o padding horizontal para otimizar espaço */
+  /* Ajustei o flex para usar largura mínima, deixando o navegador calcular */
+  flex: 0 0 23%; /* Cada item ocupa 23% da largura do contêiner */
+  min-width: 60px; /* Reduzi para 60px para telas muito pequenas */
+  
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   border: 1px solid #e0e0e0;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -58,6 +60,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .tempo div:hover {
@@ -67,44 +70,20 @@
 
 .tempo span {
   display: block;
-  font-size: 2rem;
+  font-size: 1.8rem; /* Reduzi a fonte para caber em blocos menores */
   font-weight: bold;
+  /* Adicionei 'white-space: nowrap;' para evitar que o número quebre a linha se for grande */
+  white-space: nowrap; 
 }
 
 .tempo small {
   display: block;
-  font-size: 0.9rem;
-  margin-top: 5px;
+  font-size: 0.8rem; /* Reduzi a fonte da label */
+  margin-top: 3px; /* Reduzi a margem */
   color: #b3c6cf;
 }
 
-/* RESPONSIVO */
-@media (max-width: 600px) {
-  .contador {
-    padding: 20px 10px;
-  }
-
-  .contador h3 {
-    font-size: 1.3rem;
-  }
-
-  .tempo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .tempo div {
-    min-width: auto;
-    width: 100%;
-    padding: 12px 8px;
-  }
-
-  .tempo span {
-    font-size: 1.8rem;
-  }
-}
-
+/* REMOVEMOS A MEDIA QUERY ANTERIOR POR COMPLETO */
 /* ======= BOTÃO DE COMPRA ======= */
 #botao-compra {
   text-align: center;
