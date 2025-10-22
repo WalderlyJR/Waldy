@@ -10,7 +10,12 @@
 
 </head>
  <style>
-/* ======= CRONÔMETRO REALISTA ======= */
+/* ======= CRONÔMETRO REALISTA - VERSÃO OTIMIZADA FINAL ======= */
+
+/*
+** NOTA: Mantivemos o código principal que estava funcionando,
+** removendo apenas a Media Query que usava GRID e ajustando o espaçamento.
+*/
 .contador {
   text-align: center;
   margin-top: 25px;
@@ -36,23 +41,31 @@
 /* Blocos do cronômetro */
 .tempo {
   display: flex;
-  justify-content: center; /* Centralizei para não depender de "space-between" */
+  justify-content: space-between;
   align-items: stretch;
-  gap: 8px; /* Reduzi um pouco o gap para caber em telas menores */
+  gap: 8px; /* Reduzindo o gap de 10px para 8px para ganhar espaço horizontal */
   position: relative;
   z-index: 1;
-  /* CRÍTICO: 'nowrap' garante que fiquem sempre em linha */
+  /* CRÍTICO: Mantido 'nowrap' para sempre ficar em linha */
   flex-wrap: nowrap;
+  
+  /* NOVO: Adiciona rolagem horizontal SÓ no contêiner do contador se ele apertar demais. */
+  overflow-x: auto; 
+  /* NOVO: Impede que o contador shrinks demais no mobile se houver espaço apertado */
+  min-width: 0; 
+  padding-bottom: 5px; /* Adiciona um pequeno padding para a barra de rolagem não cobrir o conteúdo */
 }
 
 .tempo div {
   background: #f0f8ff;
   border-radius: 12px;
-  padding: 10px 5px; /* Reduzi o padding horizontal para otimizar espaço */
-  /* Ajustei o flex para usar largura mínima, deixando o navegador calcular */
-  flex: 0 0 23%; /* Cada item ocupa 23% da largura do contêiner */
-  min-width: 60px; /* Reduzi para 60px para telas muito pequenas */
-  
+  padding: 15px 10px;
+  /* Mantendo o flex: 1 1 0; para que os blocos se ajustem automaticamente */
+  flex: 1 1 0; 
+  min-width: 70px; 
+  /* CRÍTICO: 'flex-shrink: 0;' impede que os itens encolham abaixo de 70px */
+  flex-shrink: 0; 
+
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   border: 1px solid #e0e0e0;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -60,7 +73,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .tempo div:hover {
@@ -70,20 +82,17 @@
 
 .tempo span {
   display: block;
-  font-size: 1.8rem; /* Reduzi a fonte para caber em blocos menores */
+  font-size: 2rem;
   font-weight: bold;
-  /* Adicionei 'white-space: nowrap;' para evitar que o número quebre a linha se for grande */
-  white-space: nowrap; 
 }
 
 .tempo small {
   display: block;
-  font-size: 0.8rem; /* Reduzi a fonte da label */
-  margin-top: 3px; /* Reduzi a margem */
+  font-size: 0.9rem;
+  margin-top: 5px;
   color: #b3c6cf;
 }
 
-/* REMOVEMOS A MEDIA QUERY ANTERIOR POR COMPLETO */
 /* ======= BOTÃO DE COMPRA ======= */
 #botao-compra {
   text-align: center;
