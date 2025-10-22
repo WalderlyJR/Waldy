@@ -10,12 +10,17 @@
 
 </head>
  <style>
-/* ======= CRONÔMETRO REALISTA ======= */
+/* ======= CRONÔMETRO REALISTA - VERSÃO OTIMIZADA FINAL ======= */
+
+/*
+** NOTA: Mantivemos o código principal que estava funcionando,
+** removendo apenas a Media Query que usava GRID e ajustando o espaçamento.
+*/
 .contador {
   text-align: center;
   margin-top: 25px;
   font-family: 'Arial Black', sans-serif;
-  color: #2668b3;
+  color: #252525;
   
   border-radius: 15px;
   padding: 25px 15px;
@@ -23,7 +28,6 @@
   position: relative;
   overflow: hidden;
   max-width: 100%;
-  
 }
 .contador h3 {
   position: relative;
@@ -39,18 +43,29 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  gap: 10px;
+  gap: 8px; /* Reduzindo o gap de 10px para 8px para ganhar espaço horizontal */
   position: relative;
   z-index: 1;
+  /* CRÍTICO: Mantido 'nowrap' para sempre ficar em linha */
   flex-wrap: nowrap;
+  
+  /* NOVO: Adiciona rolagem horizontal SÓ no contêiner do contador se ele apertar demais. */
+  overflow-x: auto; 
+  /* NOVO: Impede que o contador shrinks demais no mobile se houver espaço apertado */
+  min-width: 0; 
+  padding-bottom: 5px; /* Adiciona um pequeno padding para a barra de rolagem não cobrir o conteúdo */
 }
 
 .tempo div {
   background: #f0f8ff;
   border-radius: 12px;
   padding: 15px 10px;
-  flex: 1 1 0; /* Cresce e encolhe para caber todo o espaço */
-  min-width: 70px; /* Garantir que não fique muito estreito */
+  /* Mantendo o flex: 1 1 0; para que os blocos se ajustem automaticamente */
+  flex: 1 1 0; 
+  min-width: 70px; 
+  /* CRÍTICO: 'flex-shrink: 0;' impede que os itens encolham abaixo de 70px */
+  flex-shrink: 0; 
+
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   border: 1px solid #e0e0e0;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -76,33 +91,6 @@
   font-size: 0.9rem;
   margin-top: 5px;
   color: #b3c6cf;
-}
-
-/* RESPONSIVO */
-@media (max-width: 600px) {
-  .contador {
-    padding: 20px 10px;
-  }
-
-  .contador h3 {
-    font-size: 1.3rem;
-  }
-
-  .tempo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .tempo div {
-    min-width: auto;
-    width: 100%;
-    padding: 12px 8px;
-  }
-
-  .tempo span {
-    font-size: 1.8rem;
-  }
 }
 
 /* ======= BOTÃO DE COMPRA ======= */
