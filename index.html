@@ -1,280 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Navegação Waldy Freitas</title>
-    <link rel="stylesheet" href="style.css?v=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waldy Freitas — Expedição e Livro</title>
+  <meta name="description" content="Expedição pelo Rio São Francisco de ponta a ponta. Conheça Waldy Freitas, veja o vídeo e garanta o livro." />
 
+  <!-- Pré-carregamento opcional -->
+  <link rel="preload" as="image" href="img/hero-poster.jpg" />
+  <link rel="preload" as="video" href="media/hero.mp4" />
 
+  <!-- CSS externo com o design refinado -->
+  <link rel="stylesheet" href="style.css?v=2" />
 </head>
- <style>
-/* ======= CRONÔMETRO REALISTA - VERSÃO OTIMIZADA FINAL ======= */
-
-/*
-** NOTA: Mantivemos o código principal que estava funcionando,
-** removendo apenas a Media Query que usava GRID e ajustando o espaçamento.
-*/
-.contador {
-  text-align: center;
-  margin-top: 25px;
-  font-family: 'Arial Black', sans-serif;
-  color: #252525;
-  
-  border-radius: 15px;
-  padding: 25px 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-}
-.contador h3 {
-  position: relative;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  z-index: 1;
-}
-
-/* Blocos do cronômetro */
-.tempo {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 8px; /* Reduzindo o gap de 10px para 8px para ganhar espaço horizontal */
-  position: relative;
-  z-index: 1;
-  /* CRÍTICO: Mantido 'nowrap' para sempre ficar em linha */
-  flex-wrap: nowrap;
-  
-  /* NOVO: Adiciona rolagem horizontal SÓ no contêiner do contador se ele apertar demais. */
-  overflow-x: auto; 
-  /* NOVO: Impede que o contador shrinks demais no mobile se houver espaço apertado */
-  min-width: 0; 
-  padding-bottom: 5px; /* Adiciona um pequeno padding para a barra de rolagem não cobrir o conteúdo */
-}
-
-.tempo div {
-  background: #f0f8ff;
-  border-radius: 12px;
-  padding: 15px 10px;
-  /* Mantendo o flex: 1 1 0; para que os blocos se ajustem automaticamente */
-  flex: 1 1 0; 
-  min-width: 70px; 
-  /* CRÍTICO: 'flex-shrink: 0;' impede que os itens encolham abaixo de 70px */
-  flex-shrink: 0; 
-
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border: 1px solid #e0e0e0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.tempo div:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.tempo span {
-  display: block;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.tempo small {
-  display: block;
-  font-size: 0.9rem;
-  margin-top: 5px;
-  color: #b3c6cf;
-}
-
-/* ======= BOTÃO DE COMPRA ======= */
-#botao-compra {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.btn-comprar {
-  display: inline-block;
-  background: linear-gradient(90deg, #00b34a, #00e06f);
-  color: white;
-  padding: 15px 40px;
-  border-radius: 40px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.2rem;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-  transition: all 0.3s ease;
-  animation: fadeIn 1.2s ease-in-out;
-}
-
-.btn-comprar:hover {
-  background: linear-gradient(90deg, #00e06f, #00b34a);
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ======= RESPONSIVO ======= */
-@media (max-width: 600px) {
-  .contador {
-    padding: 20px;
-  }
-  .contador h3 {
-    font-size: 1.5rem;
-  }
-  .tempo div {
-    width: 70px;
-    padding: 10px;
-  }
-  .tempo span {
-    font-size: 1.8rem;
-  }
-}
-
- </style>
-   
 <body>
-   
+  <!-- NAV fixa sobre o vídeo -->
+  <nav class="nav" id="nav">
+    <div class="brand">Waldy Freitas</div>
+    <div class="menu">
+      <a href="#sobre">Quem sou</a>
+      <a href="#carreira">Percurso</a>
+      <a href="#livro">O Livro</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Instagram</a>
+    </div>
+    <button class="hamb" id="hamb" aria-label="Abrir menu">☰</button>
+  </nav>
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu"></div>
 
-    <header>
-        <h1>Waldy Freitas</h1>
-    </header>
-     <nav>
-  <ul>
-    <li><a href="#sobre">Quem Sou</a></li>
-    <li><a href="#carreira">Percurso da Viagem</a></li>
-    <li><a href="#livro">O Livro</a></li>
-    <li><a href="#galeria">Galeria</a></li>
-    <li><a href="#contato">instagram</a></li>
-  </ul>
-</nav>
+ <header class="hero" id="home" aria-label="Herói com vídeo">
+  <!-- dois players sobrepostos; sem poster, sem imagem -->
+  <video id="bgvA" class="hero-layer active" autoplay muted playsinline preload="auto">
+    <!-- 1ª fonte já no HTML para garantir que comece a tocar -->
+    <source src="video/caiaquevideo.mp4" type="video/mp4" />
+  </video>
 
-    <section id="sobre">
-        <div class="container sobre-conteudo">
-          <div class="texto-sobre">
-    <h2>Quem Sou</h2>
-    <p>Olá, sou Waldy Freitas. Ao longo da minha vida, fui privilegiado com a oportunidade de viver experiências que transformaram minha visão de mundo. Um marco importante dessa jornada foi a nossa expedição pelo Rio São Francisco, onde percorri desde a nascente até o mar. De caiaque e de jet ski, descobri não apenas a grandiosidade desse rio, mas também a diversidade cultural e os desafios ambientais que ele enfrenta.</p>
+  <video id="bgvB" class="hero-layer" autoplay muted playsinline preload="auto"></video>
 
-    <p>Ao longo do caminho, encontrei histórias e pessoas que deram um novo significado. Hoje, compartilho com vocês um pouco dessa experiência no nosso livro "Rio São Francisco de Ponta a Ponta".</p>
-
-</div>
-
-            <img src="img/capituranasriow.png" alt="Foto de Waldy" class="sobre-image">
-        </div>
-    </section>
+  <div class="hero-content">
+    <span class="badge">Expedição • Rio São Francisco</span>
+    <h1 class="title">Da nascente à Foz: uma jornada de 2.761 km</h1>
+    <p class="sub">De caiaque às corredeiras ao jet ski até o farol do Cabeço — uma travessia que virou livro e inspira novas expedições.</p>
+    <div class="cta">
+      <a class="btn primary" href="#livro">Quero o livro</a>
+      <a class="btn ghost" href="#sobre">Conhecer Waldy</a>
+    </div>
+  </div>
+</header>
 
 
-<section id="carreira">
-  <div class="container">
-    <div class="carreira-conteudo">
-      <div class="texto-carreira">
+
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="flex">
+      <div class="grow">
+        <h2>Quem Sou</h2>
+        <p>Olá, sou Waldy Freitas. Ao longo da minha vida, fui privilegiado com a oportunidade de viver experiências que transformaram minha visão de mundo. Um marco importante dessa jornada foi a nossa expedição pelo Rio São Francisco, onde percorri desde a nascente até o mar. De caiaque e de jet ski, descobri não apenas a grandiosidade desse rio, mas também a diversidade cultural e os desafios ambientais que ele enfrenta.</p>
+        <p>Ao longo do caminho, encontrei histórias e pessoas que deram um novo significado. Hoje, compartilho com vocês um pouco dessa experiência no nosso livro <strong>"Rio São Francisco de Ponta a Ponta"</strong>.</p>
+      </div>
+      <img src="img/capituranasriow.png" alt="Waldy no Rio São Francisco" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- PERCURSO -->
+  <section id="carreira">
+    <div class="flex">
+      <div class="grow">
         <h2>Percurso da Viagem</h2>
         <ul>
-          <li><strong>Início da Expedição:</strong> Nascente do Rio São Francisco, na serra da canastra com altitude de 1140 metros em Minas Gerais</strong>.</li>
-          <li><strong>Meio da Viagem:</strong> Percurso da cachoeira casca dantas até a ponte do guiné  de caiaque pelo leito do rio, a partir deste local navegamos de jet ski até sua foz, no farol do cabeço. <strong>2.761 km</strong>.</li>
-          <li><strong>Desafios Enfrentados:</strong> A expedição enfrentou <desafios>condições climáticas adversas e desafios logísticos em pontos de difícil acesso, desafios de corredeiras e uma pequena queda d'agua .</li>
-  
-    </ul>
+          <li><strong>Início:</strong> Nascente do Rio São Francisco, na Serra da Canastra (MG), a 1.140m de altitude.</li>
+          <li><strong>Travessia:</strong> Do Casca D'Anta até a Ponte do Guiné de caiaque; depois, navegação de jet ski até a foz no Farol do Cabeço. <strong>2.761 km</strong>.</li>
+          <li><strong>Desafios:</strong> Clima adverso, logística em trechos remotos, corredeiras e quedas d'água.</li>
+        </ul>
       </div>
-      <img src="img/fotodoveiculo.jpeg" alt="caiaque" class="carreira-image">
+      <img src="img/fotodoveiculo.jpeg" alt="Caiaque na expedição" loading="lazy" />
     </div>
-  </div>
-</section>
+  </section>
 
-
+  <!-- LIVRO + CONTADOR -->
   <section id="livro">
-  <div class="container livro-conteudo">
-    <div class="texto-livro">
-      <h2>O Livro: Rio São Francisco de Ponta a Ponta</h2>      <p>Em nossa mais recente aventura, viajei desde a nascente do Rio São Francisco até o mar. Começando de caiaque e finalizando de jet ski, registrei histórias, culturas e paisagens únicas. O livro é um convite para conhecer de perto o "Velho Chico" e refletir sobre sua importância para o Brasil.</p>
-      <p>Uma aventura de grandes desafios, em que te passarei o conhecimento de ponta a ponta.</p>
-
-      <div class="destaque-livro">
-        <strong>📘 Lançamento dia 27 de Novembro!</strong><br>
-        Garanta já o seu exemplar do livro <em>“Rio São Francisco de Ponta a Ponta”</em> e embarque nessa jornada inesquecível pelo Rio São Francisco!
-      </div>
-      
-      <div id="contador" class="contador">
-        <h3>FALTAM:</h3>
-        <div class="tempo">
-          <div><span id="dias">00</span><br><small>Dias</small></div>
-          <div><span id="horas">00</span><br><small>Horas</small></div>
-          <div><span id="minutos">00</span><br><small>Minutos</small></div>
-          <div><span id="segundos">00</span><br><small>Segundos</small></div>
+    <div class="flex">
+      <div class="grow">
+        <h2>O Livro: Rio São Francisco de Ponta a Ponta</h2>
+        <p>Em nossa mais recente aventura, viajei desde a nascente do Rio São Francisco até o mar. Começando de caiaque e finalizando de jet ski, registrei histórias, culturas e paisagens únicas. O livro é um convite para conhecer de perto o "Velho Chico" e refletir sobre sua importância para o Brasil.</p>
+        <p>Uma aventura de grandes desafios, em que te passarei o conhecimento de ponta a ponta.</p>
+        <div class="contador" id="contador">
+          <h3>FALTAM</h3>
+          <div class="tempo">
+            <div class="unit"><div class="num" id="dias">00</div><div class="lbl">Dias</div></div>
+            <div class="unit"><div class="num" id="horas">00</div><div class="lbl">Horas</div></div>
+            <div class="unit"><div class="num" id="minutos">00</div><div class="lbl">Minutos</div></div>
+            <div class="unit"><div class="num" id="segundos">00</div><div class="lbl">Segundos</div></div>
+          </div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" id="botao-compra" style="display:none" href="#comprar">Comprar agora</a>
+          <a class="btn ghost" href="#galeria">Ver fotos</a>
         </div>
       </div>
-
-
+      <img src="img/WhatsApp Image 2025-10-21 at 09.30.59.jpeg" alt="Capa do livro Rio São Francisco de Ponta a Ponta" loading="lazy" />
     </div>
+  </section>
 
-    <img src="img/WhatsApp Image 2025-10-21 at 09.30.59.jpeg" alt="Capa do Livro" class="livro-image">
-    
-  </div>
-</section>
-
-
-
-
- <section id="galeria">
-    <div class="container">
-        <h2>Fotos da Viagem</h2>
-        <div class="galeria-navegacao">
-            <button id="prev" class="navegacao-btn">&#10094;</button>
-
-            <div class="grid">
-              <img src="img/iniciojornada.png" alt="Imagem da viagem">
-                <img src="img/capituranasriow.png" alt="Imagem da viagem">
-                <img src="img/30cmrio.png" alt="Imagem da viagem">
-                <img src="img/inciocomrena.png" alt="Imagem da viagem">
-                <img src="img/Screenshot 2025-08-25 at 12-27-11 2227969f-d013-48b1-846b-2a4278420930.png - 500 px × 500 px.png" alt="Imagem da viagem">
-                <img src="img/ediçãocacho.png" alt="Imagem da viagem">
-                <img src="img/fotocomrena.png" alt="Imagem da viagem">
-                <img src="img/completo.png" alt="Imagem da viagem">
-                <img src="img/caiaqueren.png" alt="Imagem da viagem">
-                <img src="img/canoafotriowaldy.png" alt="Imagem da viagem">
-                <img src="img/fotoselfi.png" alt="Imagem da viagem">
-                <img src="img/fotowaldy.png" alt="Imagem da viagem">
-                <img src="img/canoamanu.png" alt="Imagem da viagem">
-                <img src="img/jetwaldy.jpg" alt="Imagem da viagem">
-                <img src="img/veleiro.png" alt="Imagem da viagem">
-                <img src="img/FOZ.png" alt="Imagem da viagem">
-                <img src="img/faroldoz.png" alt="Imagem da viagem">
-               
-                
-               
-
-                
-            </div>
-            <button id="next" class="navegacao-btn">&#10095;</button>
-        </div>
+  <!-- GALERIA -->
+  <section id="galeria">
+    <h2>Fotos da Viagem</h2>
+    <div class="galeria-wrap">
+      <button class="gbtn prev" id="prev" aria-label="Anterior">&#10094;</button>
+      <div class="grid" id="grid">
+        <img src="img/iniciojornada.png" alt="Início da jornada" loading="lazy">
+        <img src="img/capituranasriow.png" alt="Capituras no rio" loading="lazy">
+        <img src="img/30cmrio.png" alt="Margens do rio" loading="lazy">
+        <img src="img/inciocomrena.png" alt="Início com rena" loading="lazy">
+        <img src="img/ediçãocacho.png" alt="Cachoeira na rota" loading="lazy">
+        <img src="img/fotocomrena.png" alt="Equipe na água" loading="lazy">
+        <img src="img/completo.png" alt="Mapa completo" loading="lazy">
+        <img src="img/caiaqueren.png" alt="Caiaque" loading="lazy">
+        <img src="img/canoafotriowaldy.png" alt="Canoa no rio" loading="lazy">
+        <img src="img/fotoselfi.png" alt="Selfie na expedição" loading="lazy">
+        <img src="img/fotowaldy.png" alt="Waldy em movimento" loading="lazy">
+        <img src="img/canoamanu.png" alt="Canoa Manu" loading="lazy">
+        <img src="img/jetwaldy.jpg" alt="Jet ski" loading="lazy">
+        <img src="img/veleiro.png" alt="Veleiro" loading="lazy">
+        <img src="img/FOZ.png" alt="Foz do Rio" loading="lazy">
+        <img src="img/faroldoz.png" alt="Farol do Cabeço" loading="lazy">
+      </div>
+      <button class="gbtn next" id="next" aria-label="Próximo">&#10095;</button>
     </div>
-</section>
+  </section>
 
+  <!-- CONTATO / INSTAGRAM -->
+  <section id="contato">
+    <h2>Rede social</h2>
+    <p>Siga no Instagram: <a href="https://www.instagram.com/waldyfreitas" target="_blank" rel="noopener">@waldyfreitas</a></p>
+  </section>
 
-    <section id="contato">
-    <div class="container">
-        <h2>Rede social</h2>
-        
-      <div class="contato-item">
-    <img src="img/instagram.png" alt="instagram" class="contact-image">
-    <p>Instagram: <a href="https://www.instagram.com/waldyfreitas" target="_blank" rel="noopener">@waldyfreitas</a></p>
-</div>
-    </div>
-</section>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; <span id="ano"></span> Waldy Freitas • Rio São Francisco</p>
+  </footer>
 
-    <footer>
-        <p>&copy; Waldy Freitas/São Francisco </p>
-    </footer>
-<script src="script.js"></script>
-
+  <!-- JS externo -->
+  <script src="script.js"></script>
 </body>
 </html>
