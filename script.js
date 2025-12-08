@@ -126,13 +126,18 @@
   }
 
   function scheduleNext(player) {
-    clearTimeout(timer);
+  clearTimeout(timer);
 
-    const duration = isFinite(player.duration) && player.duration > 0 ? player.duration : 20;
-    const delay = (duration * 1000) - 1000; // 1s antes do fim
-
-    timer = setTimeout(swapVideos, delay);
+  // se ainda não carregou a duração, esperamos até carregar
+  if (!isFinite(player.duration) || player.duration === 0) {
+    player.addEventListener('loadedmetadata', () => scheduleNext(player), { once: true });
+    return;
   }
+
+  const delay = (player.duration * 1000) - 1000; // troca 1s antes do fim
+  timer = setTimeout(swapVideos, delay);
+}
+
 
   // inicializa o primeiro vídeo
   playVideo(A, playlist[idx]);
